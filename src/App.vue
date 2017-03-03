@@ -41,28 +41,13 @@ export default {
 			this.gifs = [];
 			this.is_loading = true;
 			this.no_content = false;
-			fetch('http://api.giphy.com/v1/gifs/search?q='+query+'&api_key=dc6zaTOxFJmzC')
-			.then((res)=> {return res.json()})
-			.then((res)=> { this.gifs = res.data })
-			.then((res) => {
-				this.is_loading = false;
-				if(this.gifs.length == 0){
-					this.no_content = true;
-				}
-			});
-			
+			const url = 'http://api.giphy.com/v1/gifs/search?q='+ query +'&api_key=dc6zaTOxFJmzC'
+			this.doSearch(url);
 		}
 	},
 	created(){
-		fetch('http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC')
-		.then((res)=> {return res.json()})
-		.then((res)=> { this.gifs = res.data })
-		.then((res) => {
-			this.is_loading = false;
-			if(this.gifs.length == 0){
-				this.no_content = true;
-			}
-		});
+		const url = 'http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC'
+		this.doSearch(url);
 	}
 }
 </script>
