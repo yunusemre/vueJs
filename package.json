@@ -1,8 +1,8 @@
 {
-  "name": "vuejs",
+  "name": "vue-js",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "yunusemre <emretatar36@gmail.com>",
+  "author": "yunusemretatar <yunusemre.tatar@sekomyazilim.com.tr>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -63,7 +63,7 @@
     "ora": "^1.1.0",
     "rimraf": "^2.6.0",
     "url-loader": "^0.5.7",
-    "vue-loader": "^11.0.0",
+    "vue-loader": "^11.1.4",
     "vue-style-loader": "^2.0.0",
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.1",
