@@ -28,3 +28,18 @@ npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+}
+```
+# Install sass | scss
+npm install sass-loader node-sass --save-dev
+
+----------
+And add webpack.base.conf.js and enough
+{
+  test: /\.scss$/,
+  loader: ['style', 'css', 'sass']
+}
+      
+```
+
