@@ -1,5 +1,4 @@
 var path = require('path')
-
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -56,3 +55,4 @@ module.exports = {
     port: 3000
   }
 }
+

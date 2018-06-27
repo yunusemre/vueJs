@@ -1,11 +1,11 @@
 <template>
-  	<div class="weather">
+  	<div class="weather" v-bind:class="{ active: toggle }">
         <div class="weather__data" v-if="loading" @click="this.showWeathersDetail">
           <div class="weather__data__info">
-            <p class="weather__data__info__name">{{data.name}}</p>
-            <p class="weather__data__info__temp">{{data.main.temp}}°</p>
-            <img class="weather__data__info__img" v-bind:src="'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png'" alt="data.name">
-            <p class="weather__data__info__speed">wind speed: {{data.wind.speed}}</p>
+            <p class="weather__data__info--name">{{data.name}}</p>
+            <p class="weather__data__info--temp">{{data.main.temp}}°</p>
+            <img class="weather__data__info--img" v-bind:src="'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png'" alt="data.name">
+            <p class="weather__data__info--speed">wind speed: {{data.wind.speed}}</p>
           </div>
         </div>
         <sub-weather v-if="toggle" v-bind:name="data.name" v-bind:code="data.sys.country"/>
@@ -54,43 +54,43 @@ export default {
 </script>
 <style lang="scss" scoped>
   .weather {
-    width: 20%;
+    &:hover {
+      background-color: #679ebb;  
+      transition: .5s ease; 
+    }
+    &.active {
+      background-color: #6295b1;  
+    }
     background-color: #71aac9;
     border-radius: 10px;
     cursor: pointer;
     min-height: 100px;
-    text-align: center;
     margin: 0 0 5px 5px;
+    text-align: center;
+    width: 20%;
 
     @media screen and (max-width: 768px){
       width: 100%;
     }
-
-
     &__data {
-
       &__info {
         margin-top: 20px;
-
-        &__img {
+        &--img {
           margin-top: 5px;
           text-align: center;
         }
-
-        &__name {
-            font-size: 16px;
-          }
-
-          &__temp {
-            font-family: 'Quicksand', serif;
-            margin: 10px 0 5px 0;
-            font-size: 42px;
-            font-weight: 100;
-          }
-
-          &__speed {
-            margin: 10px 0;
-          }
+        &--name {
+          font-size: 16px;
+        }
+        &--temp {
+          font-family: 'Quicksand', serif;
+          font-size: 42px;
+          font-weight: 100;
+          margin: 10px 0 5px 0;
+        }
+        &--speed {
+          margin: 10px 0;
+        }
       }
   }
 
