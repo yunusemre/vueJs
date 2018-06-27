@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="weather-app">
       <weathers v-for="item in cities" :key="item" v-bind:city="item" />
   </div>
 </template>
@@ -29,4 +29,13 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+  .weather-app{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+  }
+</style>
 

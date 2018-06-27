@@ -1,9 +1,10 @@
 <template>
   	<div class="sub--weather">
-        <hr>
         <loader v-bind:load="!loading" />
+        <p>{{name}} 5 days weathers detail</p>
         <div v-if="loading" class="sub--weather__data" v-for="item in data" :key="item.dt">
-            {{convertDate(item.dt)}} - {{item.temp.min}}
+            {{convertDate(item.dt)}} - {{item.temp.day}} °C 
+            min: {{item.temp.min}} °C - night: {{item.temp.night}} °C
             {{item.weather[0].main}}
             <img class="sub--weather__data__img" v-bind:src="'https://openweathermap.org/img/w/' + item.weather[0].icon + '.png'" alt="data.name" width="50" height="50">
         </div>
@@ -45,9 +46,17 @@ export default {
     }
   },
   created() {
-    setInterval(() => {
-      this.getSubWeather();
-    }, 200);
+    this.getSubWeather();
   }
 };
 </script>
+
+<style lang="scss">
+  .sub--weather {
+
+    &__data{
+      padding: 10px;
+    }
+  }
+</style>
+
