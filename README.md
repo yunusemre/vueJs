@@ -11,11 +11,14 @@ Modül paketlemek içinse ReactJs'den aşina olduğum webpack'i kullandım. Webp
 
 Son örneklerde ve vue-cli da browserslist için kullanılan özellikleri aldım. Babel settingslerini .babelrc olarak ekledim.
 
+Proje kurulumu:
+    ```npm install```
+
 Projeyi başlatma:
-    npm run dev kodunu terminale yazarak başlatabilirsiniz
+    ```npm run dev``` kodunu terminale yazarak başlatabilirsiniz
 
 Projeyi derlemek:
-    npm run build kodunu terminale yazarak production env. derleyebilirsiniz
+    ```npm run build``` kodunu terminale yazarak production env. derleyebilirsiniz
 
 Kullanılan özel paketler:
 Api call için axios kullandım. Standart bir fetch paketidir. Herhangi bir configürasyona gerek yok.
