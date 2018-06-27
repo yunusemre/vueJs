@@ -22,7 +22,7 @@ Api call için axios kullandım. Standart bir fetch paketidir. Herhangi bir conf
 
 Yeni proje için de normalize ve reset.css paketlerini yükledim.
 
-Kazanım olarak; normalde flexbox ile pek bir işim olmazdı ama bu proje için özellikle araştırdım ve öğrenmiş oldum. Normalde ihtiyaç olana kadar bakmayacaktım. Vue bildiğimi söylemem biraz zor ama daha önceden küçük bir proje yaptığım için oradan bilgim vardı. Bu proje ile de tekrar araştırma imkanım oldu. BEM kullanmıyordum ama onu da kullanmaya başladım.
+Kazanım olarak; normalde flexbox ile pek bir işim olmazdı ama bu proje için özellikle araştırdım ve öğrenmiş oldum. Normalde ihtiyaç olana kadar bakmayacaktım. Vue bildiğimi söylemem biraz zor ama daha önceden küçük bir proje yaptığım için oradan bilgim vardı. Bu proje ile de tekrar araştırma imkanım oldu. BEM kullanmıyordum, onu da kullanmaya başladım.
 
 
 
