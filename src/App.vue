@@ -31,11 +31,25 @@ export default {
 </script>
 
 <style lang="scss">
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 18px;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
   .weather-app{
+    width: 80%;
+    align-items: center;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0 auto;
+
+    @media screen and (max-width: 768px){
+      flex-direction: column;
+    }
   }
 </style>
 

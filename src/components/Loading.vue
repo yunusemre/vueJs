@@ -1,8 +1,6 @@
 <template>
-  	<div class="load">
-        <div v-if="load">
-          <img class="load--img" src="https://openweathermap.org/themes/openweathermap/assets/img/img-loading.gif" width="20" height="20">
-        </div>
+  	<div class="loader">
+      <img class="loader__img" src="https://openweathermap.org/themes/openweathermap/assets/img/img-loading.gif" width="50" height="50">
     </div>
 </template>
 
@@ -16,14 +14,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .load {
-    position: relative;
-    width: 100%; 
-    &--img {
-      position: absolute;
-      top: 10px;
+  .loader {
+    position: absolute;
+    
+    &__img {
       left: 45%;
+      position: absolute;
       text-align: center;
+      top: 10px;
+      width: 100%; 
     }
   }
 </style>

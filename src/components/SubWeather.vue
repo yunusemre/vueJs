@@ -1,12 +1,12 @@
 <template>
-  	<div class="sub--weather">
+  	<div class="sub-weather">
         <loader v-bind:load="!loading" />
-        <p>{{name}} 5 days weathers detail</p>
-        <div v-if="loading" class="sub--weather__data" v-for="item in data" :key="item.dt">
-            {{convertDate(item.dt)}} - {{item.temp.day}} °C 
-            min: {{item.temp.min}} °C - night: {{item.temp.night}} °C
-            {{item.weather[0].main}}
-            <img class="sub--weather__data__img" v-bind:src="'https://openweathermap.org/img/w/' + item.weather[0].icon + '.png'" alt="data.name" width="50" height="50">
+        <h2>5 days weathers report</h2>
+        <div v-if="loading" class="sub-weather__box" v-for="item in data" :key="item.dt">
+            <p class="sub-weather__box__date">{{convertDate(item.dt)}}</p>
+            <p class="sub-weather__box__temp">Temp: {{item.temp.day}} °C </p>
+            <p class="sub-weather__box__wine">Wind: {{item.speed}}</p>
+            <img class="sub-weather__box__images" v-bind:src="'https://openweathermap.org/img/w/' + item.weather[0].icon + '.png'" alt="data.name" width="50" height="50">
         </div>
     </div>
 </template>
@@ -28,11 +28,7 @@ export default {
   methods: {
     getSubWeather() {
       axios
-        .get(
-          `http://api.openweathermap.org/data/2.5/forecast/daily?q=${
-            this.name
-          },${this.code}&appid=b712b9a9b0785a9842d7c7ba49f37a5f&cnt=5`
-        )
+        .get(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${this.name},${this.code}&appid=b712b9a9b0785a9842d7c7ba49f37a5f&cnt=5&units=metric`)
         .then(response => {
           this.data = response.data.list;
         })
@@ -52,11 +48,33 @@ export default {
 </script>
 
 <style lang="scss">
-  .sub--weather {
+  .sub-weather {
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
 
-    &__data{
-      padding: 10px;
+    h2 { 
+      font-size: 14px; 
+      text-align: center;
     }
+
+    &__box {
+      border-bottom: 1px solid #eee;
+      margin-top: 5px;
+      padding: 5px;
+      position: relative;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      &__images {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+      }
+    }
+    
   }
 </style>
 
