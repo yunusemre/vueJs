@@ -1,78 +1,32 @@
 <template>
-  <div id="app">
-    <nav>
-      Müminsiz Gif
-    </nav>
-    <search v-on:SearchRequested="handleSearch"></search>
-    <p v-if="is_loading">Loading...</p>
-    <p class="warning" v-if="no_content">Oooo my god. You falled in boiler :)</p>
-    <preview :gifs="gifs"></preview>
+  <div>
+      <weathers v-for="item in cities" :key="item" v-bind:city="item" />
   </div>
 </template>
 
 <script>
-
-import Search from './components/Search.vue'
-import Preview from './components/Preview.vue'
-
+import axios from "axios";
+import Weathers from "./components/Weathers";
 export default {
-	name: 'app',
-	components: { Search, Preview },
-	data(){
-		return {
-			is_loading: true,
-			no_content: false,
-			gifs: []
-		}
-	},
-	methods: {
-		doSearch(url){
-			fetch(url)
-			.then((res)=> {return res.json()})
-			.then((res)=> { this.gifs = res.data })
-			.then((res) => {
-				this.is_loading = false;
-				if(this.gifs.length == 0){
-					this.no_content = true;
-				}
-			});
-		},
-		handleSearch(query){
-			this.gifs = [];
-			this.is_loading = true;
-			this.no_content = false;
-			const url = 'http://api.giphy.com/v1/gifs/search?q='+ query +'&api_key=dc6zaTOxFJmzC'
-			this.doSearch(url);
-		}
-	},
-	created(){
-		const url = 'http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC'
-		this.doSearch(url);
-	}
-}
+  name: "app",
+  components: {
+    Weathers
+  },
+  data() {
+    return {
+      cities: [
+        "London,uk",
+        "İstanbul,tr",
+        "Madrid,es",
+        "Nantes,fr",
+        "Berlin,de"
+      ]
+    };
+  },
+  created() {
+    // axios.get(`https://owm.io/data/2.5/find?lat=51&lon=7.5&cnt=5&appid=b712b9a9b0785a9842d7c7ba49f37a5f`)
+    // .then(res=> this.city = res.data)
+  }
+};
 </script>
 
-<style>
-	#app {
-		font-family: 'Avenir', Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		color: #2c3e50;
-		text-align: center;
-		padding: 0 10px 10px 10px;
-	}
-
-	nav {
-		background: white;
-		text-align: center;
-		margin-bottom: 40px;
-		border-bottom: 1px solid #ddd;
-		padding-top : 10px;
-		padding-bottom : 10px;
-		font-size: 36px;
-		border-radius: 4px;
-	}
-
-	.warning { color: red; font-weight: bold;}
-
-</style>

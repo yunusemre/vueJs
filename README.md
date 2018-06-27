@@ -1,45 +1,15 @@
-# vue-js
+Sunum
 
-> A Vue.js project
+Package.json:
+Burada bazı vue için default paketleri yükledim. Bunlar vue-loader, vue-template-compiler. .vue formatlarını derlerken kullanılıyor. https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
+webpack.config.js' in içerisinde linkleri de ekledim.
 
-## Build Setup
+Paket yöneticisi:
+Paket yöneticisi olarak normalde ReactJs yazdığım için aşina olduğum webpack'i kullandım. Webpack'in kendi standartları dışında örnekleri inceleyerek ve sitesindeki (https://vuejs.org/v2/guide/installation.html#Webpack) webpack configlerini de inceleyerek basit bir yapı oluşturdum. Scss kullanacağım için ona göre ayar yaptım. Herhangi bir resim kullanmayacağımdan dolayı image formatlarından hiçbirisini eklemedim. Normalde herhangi bir başlangıç node enviroment'ı kullanamayacaktım ama derleme için cross-env paketini kullandım. ES6 ile yazacağım için de Babel kullanıyorum.
 
-``` bash
-# install dependencies
-npm install
+    Son örneklerde ve vue-cli da browserslist için kullanılan özellikleri aldım. Babel settingslerini .babelrc olarak ekledim.
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-
-```
-# Install sass | scss
-npm install sass-loader node-sass --save-dev
-
-----------
-And add webpack.base.conf.js and enough
-{
-  test: /\.scss$/,
-  loader: ['style', 'css', 'sass']
-}
-      
-```
-
+Projeyi başlatma:
+npm run dev kodunu terminale yazarak başlatabilirsiniz.
+Projeyi derlemek:
+npm run build kodunu terminale yazarak production env. derleyebilirsiniz.
