@@ -2,12 +2,10 @@
   	<div class="weather">
         <div class="weather__data" v-if="loading" @click="this.showWeathersDetail">
           <div class="weather__data__info">
-            <img class="weather__data__info__img" v-bind:src="'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png'" alt="data.name" width="80" height="80">
-            <section class="weather__data__info--box">
-              <p class="weather__data__info--box__name">{{data.name}}</p>
-              <p class="weather__data__info--box__wine">Wind: {{data.wind.speed}}</p>
-              <p class="weather__data__info--box__wine">Temp: {{data.main.temp}} °C</p>
-            </section>
+            <p class="weather__data__info__name">{{data.name}}</p>
+            <p class="weather__data__info__temp">{{data.main.temp}}°</p>
+            <img class="weather__data__info__img" v-bind:src="'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png'" alt="data.name">
+            <p class="weather__data__info__speed">wind speed: {{data.wind.speed}}</p>
           </div>
         </div>
         <sub-weather v-if="toggle" v-bind:name="data.name" v-bind:code="data.sys.country"/>
@@ -16,13 +14,12 @@
 
 <script>
 import SubWeather from "./SubWeather";
-import Loader from "./Loading";
 import axios from "axios";
 
 export default {
   name: "Weathers",
   props: ["city"],
-  components: { SubWeather, Loader },
+  components: { SubWeather },
   data() {
     return {
       data: {},
@@ -58,12 +55,12 @@ export default {
 <style lang="scss" scoped>
   .weather {
     width: 20%;
-    border: 1px solid #eee;
-    border-radius: 4px;
+    background-color: #71aac9;
+    border-radius: 10px;
     cursor: pointer;
     min-height: 100px;
-    position: relative;
     text-align: center;
+    margin: 0 0 5px 5px;
 
     @media screen and (max-width: 768px){
       width: 100%;
@@ -73,15 +70,27 @@ export default {
     &__data {
 
       &__info {
+        margin-top: 20px;
+
         &__img {
+          margin-top: 5px;
           text-align: center;
         }
 
-        &--box{
-          &__name {
+        &__name {
             font-size: 16px;
           }
-        }
+
+          &__temp {
+            font-family: 'Quicksand', serif;
+            margin: 10px 0 5px 0;
+            font-size: 42px;
+            font-weight: 100;
+          }
+
+          &__speed {
+            margin: 10px 0;
+          }
       }
   }
 

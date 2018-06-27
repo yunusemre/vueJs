@@ -1,11 +1,10 @@
 <template>
   	<div class="sub-weather">
-        <loader v-bind:load="!loading" />
-        <h2>5 days weathers report</h2>
+        <loader v-if="!loading" />
         <div v-if="loading" class="sub-weather__box" v-for="item in data" :key="item.dt">
             <p class="sub-weather__box__date">{{convertDate(item.dt)}}</p>
-            <p class="sub-weather__box__temp">Temp: {{item.temp.day}} °C </p>
-            <p class="sub-weather__box__wine">Wind: {{item.speed}}</p>
+            <p class="sub-weather__box__temp">{{item.temp.day}} °C </p>
+            <p class="sub-weather__box__wine">{{item.speed}}</p>
             <img class="sub-weather__box__images" v-bind:src="'https://openweathermap.org/img/w/' + item.weather[0].icon + '.png'" alt="data.name" width="50" height="50">
         </div>
     </div>
@@ -52,14 +51,10 @@ export default {
     margin-top: 20px;
     text-align: left;
     width: 100%;
-
-    h2 { 
-      font-size: 14px; 
-      text-align: center;
-    }
+    font-family: 'Quicksand', serif;
 
     &__box {
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #81bedf;
       margin-top: 5px;
       padding: 5px;
       position: relative;
@@ -71,7 +66,7 @@ export default {
       &__images {
         position: absolute;
         right: 10px;
-        top: 5px;
+        top: 0px;
       }
     }
     
