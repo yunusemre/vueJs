@@ -2,9 +2,9 @@ var path = require('path')
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    path: path.resolve(__dirname, './build'),
+    publicPath: '/build/',
+    filename: 'main.js'
   },
   module: {
     rules: [
