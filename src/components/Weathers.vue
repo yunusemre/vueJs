@@ -39,7 +39,7 @@ export default {
         }); 
     },
     
-    showWeathersDetail(city){
+    showWeathersDetail(){
       this.toggle = !this.toggle
     }
   },
