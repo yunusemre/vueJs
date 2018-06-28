@@ -11,18 +11,21 @@ Modül paketlemek içinse ReactJs'den aşina olduğum webpack'i kullandım. Webp
 
 Son örneklerde ve vue-cli da browserslist için kullanılan özellikleri aldım. Babel settingslerini .babelrc olarak ekledim.
 
+Proje kurulumu:
+    ```npm install```
+
 Projeyi başlatma:
-    npm run dev kodunu terminale yazarak başlatabilirsiniz
+    ```npm run dev``` kodunu terminale yazarak başlatabilirsiniz
 
 Projeyi derlemek:
-    npm run build kodunu terminale yazarak production env. derleyebilirsiniz
+    ```npm run build``` kodunu terminale yazarak production env. derleyebilirsiniz
 
 Kullanılan özel paketler:
 Api call için axios kullandım. Standart bir fetch paketidir. Herhangi bir configürasyona gerek yok.
 
 Yeni proje için de normalize ve reset.css paketlerini yükledim.
 
-Kazanım olarak; normalde flexbox ile pek bir işim olmazdı ama bu proje için özellikle araştırdım ve öğrenmiş oldum. Normalde ihtiyaç olana kadar bakmayacaktım. Vue bildiğimi söylemem biraz zor ama daha önceden küçük bir proje yaptığım için oradan bilgim vardı. Bu proje ile de tekrar araştırma imkanım oldu. BEM kullanmıyordum ama onu da kullanmaya başladım.
+Kazanım olarak; normalde flexbox ile pek bir işim olmazdı ama bu proje için özellikle araştırdım ve öğrenmiş oldum. Normalde ihtiyaç olana kadar bakmayacaktım. Vue bildiğimi söylemem biraz zor ama daha önceden küçük bir proje yaptığım için oradan bilgim vardı. Bu proje ile de tekrar araştırma imkanım oldu. BEM kullanmıyordum, onu da kullanmaya başladım.
 
 
 

@@ -39,12 +39,8 @@ export default {
         }); 
     },
     
-    showWeathersDetail(city){
+    showWeathersDetail(){
       this.toggle = !this.toggle
-    },
-
-    convertDate(val) {
-      return new Date(val * 1000).toLocaleDateString();
     }
   },
   created() {
