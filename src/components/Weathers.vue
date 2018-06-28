@@ -41,10 +41,6 @@ export default {
     
     showWeathersDetail(city){
       this.toggle = !this.toggle
-    },
-
-    convertDate(val) {
-      return new Date(val * 1000).toLocaleDateString();
     }
   },
   created() {
