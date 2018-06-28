@@ -1469,11 +1469,8 @@ module.exports = Cancel;
         _this.loading = true;
       });
     },
-    showWeathersDetail: function showWeathersDetail(city) {
+    showWeathersDetail: function showWeathersDetail() {
       this.toggle = !this.toggle;
-    },
-    convertDate: function convertDate(val) {
-      return new Date(val * 1000).toLocaleDateString();
     }
   },
   created: function created() {
@@ -13774,7 +13771,7 @@ module.exports = function spread(callback) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Weathers_vue__ = __webpack_require__(14);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_39aab5c0_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Weathers_vue__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a363350e_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Weathers_vue__ = __webpack_require__(53);
 function injectStyle (ssrContext) {
   __webpack_require__(43)
 }
@@ -13789,12 +13786,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-39aab5c0"
+var __vue_scopeId__ = "data-v-a363350e"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Weathers_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_39aab5c0_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Weathers_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a363350e_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Weathers_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -13815,7 +13812,7 @@ var content = __webpack_require__(44);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("573918cd", content, true, {});
+var update = __webpack_require__(2)("7f77f38d", content, true, {});
 
 /***/ }),
 /* 44 */
@@ -13826,7 +13823,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.weather[data-v-39aab5c0] {\n  background-color: #71aac9;\n  border-radius: 10px;\n  cursor: pointer;\n  min-height: 100px;\n  margin: 0 0 5px 5px;\n  text-align: center;\n  width: 20%;\n}\n.weather[data-v-39aab5c0]:hover {\n    background-color: #679ebb;\n    transition: .5s ease;\n}\n.weather.active[data-v-39aab5c0] {\n    background-color: #6295b1;\n}\n@media screen and (max-width: 768px) {\n.weather[data-v-39aab5c0] {\n      width: 100%;\n}\n}\n.weather__data__info[data-v-39aab5c0] {\n    margin-top: 20px;\n}\n.weather__data__info--img[data-v-39aab5c0] {\n      margin-top: 5px;\n      text-align: center;\n}\n.weather__data__info--name[data-v-39aab5c0] {\n      font-size: 16px;\n}\n.weather__data__info--temp[data-v-39aab5c0] {\n      font-family: 'Quicksand', serif;\n      font-size: 42px;\n      font-weight: 100;\n      margin: 10px 0 5px 0;\n}\n.weather__data__info--speed[data-v-39aab5c0] {\n      margin: 10px 0;\n}\n", ""]);
+exports.push([module.i, "\n.weather[data-v-a363350e] {\n  background-color: #71aac9;\n  border-radius: 10px;\n  cursor: pointer;\n  min-height: 100px;\n  margin: 0 0 5px 5px;\n  text-align: center;\n  width: 20%;\n}\n.weather[data-v-a363350e]:hover {\n    background-color: #679ebb;\n    transition: .5s ease;\n}\n.weather.active[data-v-a363350e] {\n    background-color: #6295b1;\n}\n@media screen and (max-width: 768px) {\n.weather[data-v-a363350e] {\n      width: 100%;\n}\n}\n.weather__data__info[data-v-a363350e] {\n    margin-top: 20px;\n}\n.weather__data__info--img[data-v-a363350e] {\n      margin-top: 5px;\n      text-align: center;\n}\n.weather__data__info--name[data-v-a363350e] {\n      font-size: 16px;\n}\n.weather__data__info--temp[data-v-a363350e] {\n      font-family: 'Quicksand', serif;\n      font-size: 42px;\n      font-weight: 100;\n      margin: 10px 0 5px 0;\n}\n.weather__data__info--speed[data-v-a363350e] {\n      margin: 10px 0;\n}\n", ""]);
 
 // exports
 
