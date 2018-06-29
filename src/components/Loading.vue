@@ -5,13 +5,14 @@
 </template>
 <style lang="scss" scoped>
   .loader {
-    position: relative;
+      margin: 0 auto;
+      position: relative;
+      width: 100%;
+      text-align: center;
+      height: 100%;
     
     &__img {
-      left: 45%;
-      position: absolute;
-      text-align: center;
-      top: 10px;
+      margin: 25% auto;
     }
   }
 </style>

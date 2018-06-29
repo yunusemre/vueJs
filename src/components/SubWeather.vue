@@ -27,13 +27,11 @@ export default {
   methods: {
     getSubWeather() {
       axios
-        .get(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${this.name},${this.code}&appid=b712b9a9b0785a9842d7c7ba49f37a5f&cnt=5&units=metric`)
+        .get(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${this.name},${this.code}&appid=b712b9a9b0785a9842d7c7ba49f37a5f&cnt=5&units=metric`)
         .then(response => {
           this.data = response.data.list;
-        })
-        .finally(res => {
           this.loading = true;
-        });
+        })
     },
 
     convertDate(val) {
@@ -41,7 +39,9 @@ export default {
     }
   },
   created() {
-    this.getSubWeather();
+    setTimeout(()=>{
+      this.getSubWeather();
+    }, 1000)
   }
 };
 </script>

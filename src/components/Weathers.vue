@@ -1,5 +1,6 @@
 <template>
   	<div class="weather" v-bind:class="{ active: toggle }">
+        <loader v-if="!loading" />
         <div class="weather__data" v-if="loading" @click="this.showWeathersDetail">
           <div class="weather__data__info">
             <p class="weather__data__info--name">{{data.name}}</p>
@@ -14,12 +15,13 @@
 
 <script>
 import SubWeather from "./SubWeather";
+import Loader from './Loading'
 import axios from "axios";
 
 export default {
   name: "Weathers",
   props: ["city"],
-  components: { SubWeather },
+  components: { SubWeather, Loader },
   data() {
     return {
       data: {},
@@ -30,13 +32,11 @@ export default {
   methods: {
     getWeather() {
       axios
-        .get(`http://api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=b712b9a9b0785a9842d7c7ba49f37a5f&units=metric`)
+        .get(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&APPID=b712b9a9b0785a9842d7c7ba49f37a5f&units=metric`)
         .then(response => {
           this.data = response.data;
-        })
-        .finally(res => {
           this.loading = true;
-        }); 
+        })
     },
     
     showWeathersDetail(){
@@ -44,7 +44,9 @@ export default {
     }
   },
   created() {
-    this.getWeather();
+    setTimeout(()=>{
+      this.getWeather();  
+    }, 1000)
   }
 };
 </script>
