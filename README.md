@@ -15,7 +15,7 @@ Proje kurulumu:
     ```npm install```
 
 Projeyi başlatma:
-    ```npm run dev``` kodunu terminale yazarak başlatabilirsiniz
+    ```npm start``` kodunu terminale yazarak başlatabilirsiniz
 
 Projeyi derlemek:
     ```npm run build``` kodunu terminale yazarak production env. derleyebilirsiniz
