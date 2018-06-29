@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/build/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(9);
-var isBuffer = __webpack_require__(25);
+var isBuffer = __webpack_require__(26);
 
 /*global toString:true*/
 
@@ -475,7 +475,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(23)
+var listToStyles = __webpack_require__(24)
 
 /*
 type StyleObject = {
@@ -1013,7 +1013,7 @@ module.exports = g;
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(24);
+module.exports = __webpack_require__(25);
 
 /***/ }),
 /* 7 */
@@ -1023,7 +1023,7 @@ module.exports = __webpack_require__(24);
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(27);
+var normalizeHeaderName = __webpack_require__(28);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -1126,7 +1126,7 @@ module.exports = defaults;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Weathers__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_Weathers__ = __webpack_require__(43);
 //
 //
 //
@@ -1178,12 +1178,12 @@ module.exports = function bind(fn, thisArg) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(28);
-var buildURL = __webpack_require__(30);
-var parseHeaders = __webpack_require__(31);
-var isURLSameOrigin = __webpack_require__(32);
+var settle = __webpack_require__(29);
+var buildURL = __webpack_require__(31);
+var parseHeaders = __webpack_require__(32);
+var isURLSameOrigin = __webpack_require__(33);
 var createError = __webpack_require__(11);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(33);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(34);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -1280,7 +1280,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(34);
+      var cookies = __webpack_require__(35);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -1365,7 +1365,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(29);
+var enhanceError = __webpack_require__(30);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1426,9 +1426,10 @@ module.exports = Cancel;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SubWeather__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__SubWeather__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Loading__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 //
 //
 //
@@ -1443,6 +1444,8 @@ module.exports = Cancel;
 //
 //
 //
+//
+
 
 
 
@@ -1450,7 +1453,7 @@ module.exports = Cancel;
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "Weathers",
   props: ["city"],
-  components: { SubWeather: __WEBPACK_IMPORTED_MODULE_0__SubWeather__["a" /* default */] },
+  components: { SubWeather: __WEBPACK_IMPORTED_MODULE_0__SubWeather__["a" /* default */], Loader: __WEBPACK_IMPORTED_MODULE_1__Loading__["a" /* default */] },
   data: function data() {
     return {
       data: {},
@@ -1463,9 +1466,8 @@ module.exports = Cancel;
     getWeather: function getWeather() {
       var _this = this;
 
-      __WEBPACK_IMPORTED_MODULE_1_axios___default.a.get("http://api.openweathermap.org/data/2.5/weather?q=" + this.city + "&APPID=b712b9a9b0785a9842d7c7ba49f37a5f&units=metric").then(function (response) {
+      __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get("https://api.openweathermap.org/data/2.5/weather?q=" + this.city + "&APPID=b712b9a9b0785a9842d7c7ba49f37a5f&units=metric").then(function (response) {
         _this.data = response.data;
-      }).finally(function (res) {
         _this.loading = true;
       });
     },
@@ -1474,7 +1476,11 @@ module.exports = Cancel;
     }
   },
   created: function created() {
-    this.getWeather();
+    var _this2 = this;
+
+    setTimeout(function () {
+      _this2.getWeather();
+    }, 1000);
   }
 });
 
@@ -1485,7 +1491,7 @@ module.exports = Cancel;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Loading__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Loading__ = __webpack_require__(16);
 //
 //
 //
@@ -1517,9 +1523,8 @@ module.exports = Cancel;
     getSubWeather: function getSubWeather() {
       var _this = this;
 
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("http://api.openweathermap.org/data/2.5/forecast/daily?q=" + this.name + "," + this.code + "&appid=b712b9a9b0785a9842d7c7ba49f37a5f&cnt=5&units=metric").then(function (response) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get("https://api.openweathermap.org/data/2.5/forecast/daily?q=" + this.name + "," + this.code + "&appid=b712b9a9b0785a9842d7c7ba49f37a5f&cnt=5&units=metric").then(function (response) {
         _this.data = response.data.list;
-      }).finally(function (res) {
         _this.loading = true;
       });
     },
@@ -1528,7 +1533,11 @@ module.exports = Cancel;
     }
   },
   created: function created() {
-    this.getSubWeather();
+    var _this2 = this;
+
+    setTimeout(function () {
+      _this2.getSubWeather();
+    }, 1000);
   }
 });
 
@@ -1537,9 +1546,43 @@ module.exports = Cancel;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0707d75a_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Loading_vue__ = __webpack_require__(51);
+function injectStyle (ssrContext) {
+  __webpack_require__(49)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = null
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-0707d75a"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_0707d75a_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Loading_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+
+/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_normalize_css__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_normalize_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_normalize_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_reset_css_reset_css__ = __webpack_require__(57);
@@ -1557,7 +1600,7 @@ new __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */]({
 });
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12520,10 +12563,10 @@ Vue.compile = compileToFunctions;
 
 /* harmony default export */ __webpack_exports__["a"] = (Vue);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(5), __webpack_require__(18).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(5), __webpack_require__(19).setImmediate))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -12579,7 +12622,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(19);
+__webpack_require__(20);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -12593,7 +12636,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -12786,7 +12829,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(3)))
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12794,7 +12837,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* unused harmony namespace reexport */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_52520198_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_App_vue__ = __webpack_require__(54);
 function injectStyle (ssrContext) {
-  __webpack_require__(21)
+  __webpack_require__(22)
 }
 var normalizeComponent = __webpack_require__(4)
 /* script */
@@ -12823,20 +12866,20 @@ var Component = normalizeComponent(
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(22);
+var content = __webpack_require__(23);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var update = __webpack_require__(2)("7ee1d165", content, true, {});
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -12850,7 +12893,7 @@ exports.push([module.i, "\nbody {\n  background-color: #81bedf;\n  background-im
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 /**
@@ -12883,7 +12926,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12891,7 +12934,7 @@ module.exports = function listToStyles (parentId, list) {
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(9);
-var Axios = __webpack_require__(26);
+var Axios = __webpack_require__(27);
 var defaults = __webpack_require__(7);
 
 /**
@@ -12926,14 +12969,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(13);
-axios.CancelToken = __webpack_require__(40);
+axios.CancelToken = __webpack_require__(41);
 axios.isCancel = __webpack_require__(12);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(41);
+axios.spread = __webpack_require__(42);
 
 module.exports = axios;
 
@@ -12942,7 +12985,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 /*!
@@ -12969,7 +13012,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12977,8 +13020,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(7);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(35);
-var dispatchRequest = __webpack_require__(36);
+var InterceptorManager = __webpack_require__(36);
+var dispatchRequest = __webpack_require__(37);
 
 /**
  * Create a new instance of Axios
@@ -13055,7 +13098,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13074,7 +13117,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13107,7 +13150,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13135,7 +13178,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13208,7 +13251,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13268,7 +13311,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13343,7 +13386,7 @@ module.exports = (
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13386,7 +13429,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13446,7 +13489,7 @@ module.exports = (
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13505,18 +13548,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(37);
+var transformData = __webpack_require__(38);
 var isCancel = __webpack_require__(12);
 var defaults = __webpack_require__(7);
-var isAbsoluteURL = __webpack_require__(38);
-var combineURLs = __webpack_require__(39);
+var isAbsoluteURL = __webpack_require__(39);
+var combineURLs = __webpack_require__(40);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -13598,7 +13641,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13625,7 +13668,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13646,7 +13689,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13667,7 +13710,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13731,7 +13774,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13765,15 +13808,15 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Weathers_vue__ = __webpack_require__(14);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a363350e_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Weathers_vue__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_da3197ca_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Weathers_vue__ = __webpack_require__(53);
 function injectStyle (ssrContext) {
-  __webpack_require__(43)
+  __webpack_require__(44)
 }
 var normalizeComponent = __webpack_require__(4)
 /* script */
@@ -13786,12 +13829,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-a363350e"
+var __vue_scopeId__ = "data-v-da3197ca"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Weathers_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_a363350e_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Weathers_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_da3197ca_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Weathers_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -13802,20 +13845,20 @@ var Component = normalizeComponent(
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(44);
+var content = __webpack_require__(45);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("7f77f38d", content, true, {});
+var update = __webpack_require__(2)("13947bdc", content, true, {});
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -13823,21 +13866,21 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.weather[data-v-a363350e] {\n  background-color: #71aac9;\n  border-radius: 10px;\n  cursor: pointer;\n  min-height: 100px;\n  margin: 0 0 5px 5px;\n  text-align: center;\n  width: 20%;\n}\n.weather[data-v-a363350e]:hover {\n    background-color: #679ebb;\n    transition: .5s ease;\n}\n.weather.active[data-v-a363350e] {\n    background-color: #6295b1;\n}\n@media screen and (max-width: 768px) {\n.weather[data-v-a363350e] {\n      width: 100%;\n}\n}\n.weather__data__info[data-v-a363350e] {\n    margin-top: 20px;\n}\n.weather__data__info--img[data-v-a363350e] {\n      margin-top: 5px;\n      text-align: center;\n}\n.weather__data__info--name[data-v-a363350e] {\n      font-size: 16px;\n}\n.weather__data__info--temp[data-v-a363350e] {\n      font-family: 'Quicksand', serif;\n      font-size: 42px;\n      font-weight: 100;\n      margin: 10px 0 5px 0;\n}\n.weather__data__info--speed[data-v-a363350e] {\n      margin: 10px 0;\n}\n", ""]);
+exports.push([module.i, "\n.weather[data-v-da3197ca] {\n  background-color: #71aac9;\n  border-radius: 10px;\n  cursor: pointer;\n  min-height: 100px;\n  margin: 0 0 5px 5px;\n  text-align: center;\n  width: 20%;\n}\n.weather[data-v-da3197ca]:hover {\n    background-color: #679ebb;\n    transition: .5s ease;\n}\n.weather.active[data-v-da3197ca] {\n    background-color: #6295b1;\n}\n@media screen and (max-width: 768px) {\n.weather[data-v-da3197ca] {\n      width: 100%;\n}\n}\n.weather__data__info[data-v-da3197ca] {\n    margin-top: 20px;\n}\n.weather__data__info--img[data-v-da3197ca] {\n      margin-top: 5px;\n      text-align: center;\n}\n.weather__data__info--name[data-v-da3197ca] {\n      font-size: 16px;\n}\n.weather__data__info--temp[data-v-da3197ca] {\n      font-family: 'Quicksand', serif;\n      font-size: 42px;\n      font-weight: 100;\n      margin: 10px 0 5px 0;\n}\n.weather__data__info--speed[data-v-da3197ca] {\n      margin: 10px 0;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_SubWeather_vue__ = __webpack_require__(15);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f3e213cc_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_SubWeather_vue__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3f39900c_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_SubWeather_vue__ = __webpack_require__(52);
 function injectStyle (ssrContext) {
-  __webpack_require__(46)
+  __webpack_require__(47)
 }
 var normalizeComponent = __webpack_require__(4)
 /* script */
@@ -13855,7 +13898,7 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_SubWeather_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f3e213cc_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_SubWeather_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_3f39900c_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_SubWeather_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -13866,20 +13909,20 @@ var Component = normalizeComponent(
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(47);
+var content = __webpack_require__(48);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("1de6840c", content, true, {});
+var update = __webpack_require__(2)("5dd5e6c1", content, true, {});
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -13893,40 +13936,6 @@ exports.push([module.i, "\n.sub-weather {\n  font-family: 'Quicksand', serif;\n 
 
 
 /***/ }),
-/* 48 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_190c6e18_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Loading_vue__ = __webpack_require__(51);
-function injectStyle (ssrContext) {
-  __webpack_require__(49)
-}
-var normalizeComponent = __webpack_require__(4)
-/* script */
-var __vue_script__ = null
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-190c6e18"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_190c6e18_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Loading_vue__["a" /* default */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -13937,7 +13946,7 @@ var content = __webpack_require__(50);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("73220afc", content, true, {});
+var update = __webpack_require__(2)("20745400", content, true, {});
 
 /***/ }),
 /* 50 */
@@ -13948,7 +13957,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.loader[data-v-190c6e18] {\n  position: relative;\n}\n.loader__img[data-v-190c6e18] {\n    left: 45%;\n    position: absolute;\n    text-align: center;\n    top: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.loader[data-v-0707d75a] {\n  margin: 0 auto;\n  position: relative;\n  width: 100%;\n  text-align: center;\n  height: 100%;\n}\n.loader__img[data-v-0707d75a] {\n    margin: 25% auto;\n}\n", ""]);
 
 // exports
 
@@ -13978,7 +13987,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"weather",class:{ active: _vm.toggle }},[(_vm.loading)?_c('div',{staticClass:"weather__data",on:{"click":this.showWeathersDetail}},[_c('div',{staticClass:"weather__data__info"},[_c('p',{staticClass:"weather__data__info--name"},[_vm._v(_vm._s(_vm.data.name))]),_vm._v(" "),_c('p',{staticClass:"weather__data__info--temp"},[_vm._v(_vm._s(_vm.data.main.temp)+"°")]),_vm._v(" "),_c('img',{staticClass:"weather__data__info--img",attrs:{"src":'https://openweathermap.org/img/w/' + _vm.data.weather[0].icon + '.png',"alt":"data.name"}}),_vm._v(" "),_c('p',{staticClass:"weather__data__info--speed"},[_vm._v("wind speed: "+_vm._s(_vm.data.wind.speed))])])]):_vm._e(),_vm._v(" "),(_vm.toggle)?_c('sub-weather',{attrs:{"name":_vm.data.name,"code":_vm.data.sys.country}}):_vm._e()],1)}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"weather",class:{ active: _vm.toggle }},[(!_vm.loading)?_c('loader'):_vm._e(),_vm._v(" "),(_vm.loading)?_c('div',{staticClass:"weather__data",on:{"click":this.showWeathersDetail}},[_c('div',{staticClass:"weather__data__info"},[_c('p',{staticClass:"weather__data__info--name"},[_vm._v(_vm._s(_vm.data.name))]),_vm._v(" "),_c('p',{staticClass:"weather__data__info--temp"},[_vm._v(_vm._s(_vm.data.main.temp)+"°")]),_vm._v(" "),_c('img',{staticClass:"weather__data__info--img",attrs:{"src":'https://openweathermap.org/img/w/' + _vm.data.weather[0].icon + '.png',"alt":"data.name"}}),_vm._v(" "),_c('p',{staticClass:"weather__data__info--speed"},[_vm._v("wind speed: "+_vm._s(_vm.data.wind.speed))])])]):_vm._e(),_vm._v(" "),(_vm.toggle)?_c('sub-weather',{attrs:{"name":_vm.data.name,"code":_vm.data.sys.country}}):_vm._e()],1)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
