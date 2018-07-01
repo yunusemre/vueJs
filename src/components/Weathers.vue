@@ -46,7 +46,7 @@ export default {
   created() {
     setTimeout(()=>{
       this.getWeather();  
-    }, 1000)
+    }, 300)
   }
 };
 </script>
